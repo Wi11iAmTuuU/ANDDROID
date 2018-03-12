@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="edtSex" type="id">性別</item>
+    <item name="edtAge" type="id">年齡</item>
+    <item name="btnOK" type="id">按鍵</item>
+    <item name="txtR" type="id">輸出</item>
+</resources>
