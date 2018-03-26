@@ -9,57 +9,87 @@
     tools:context="com.example.williamtuuu.hw01.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sex"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="3dp" />
+        android:textSize="18sp"
+        android:id="@+id/txtSex" />
 
-    <EditText
-        android:id="@+id/edtSex"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spnSex"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/sex_hint"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="30dp" />
+        android:entries="@array/sex_list"
+        android:spinnerMode="dialog"
+        android:prompt="@string/spn_sex_list" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtAge"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/age"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="79dp" />
+        android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/edtAge"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radGrpAge"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/age_hint"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="106dp" />
+        android:orientation="vertical"
+        android:checkedButton="@+id/radBtnAgeRange1">
+
+        <RadioButton
+            android:id="@+id/radBtnAgeRange1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maleAgeS"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radBtnAgeRange2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maleAgeM"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radBtnAgeRange3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maleAgeL"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/family"
+        tools:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtNumFamily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/number" />
+
+    <NumberPicker
+        android:id="@+id/numPkrFamply"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/btnOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_ok"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="152dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txtR"
-        android:layout_width="315dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/suggestion"
-        android:textSize="25sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="220dp" />
+        android:textSize="18sp" />
 
 </LinearLayout>
