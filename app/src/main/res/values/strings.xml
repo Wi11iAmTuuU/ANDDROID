@@ -1,22 +1,32 @@
 <resources>
-    <string name="app_name">HW#3:涂家瑋</string>
+    <string name="app_name">HW#4-1:涂家瑋</string>
     <string name="sex">性別</string>
     <string name="sex_hint">(Type Sex)</string>
-    <string name="age">年齡</string>
+    <string name="Mage">男性年齡</string>
+    <string name="Feage">女性年齡</string>
     <string name="age_hint">(Type Age)</string>
     <string name="btn_ok">確定</string>
     <string name="suggestion">建議：</string>
     <string name="sug_not_hurry">還不急。</string>
     <string name="sug_get_married">趕快結婚！</string>
     <string name="sug_find_couple">開始找對象。</string>
-    <string name="sex_male">male</string>
+    <string name="sex_male">男性</string>
+    <string name="sex_female">女性</string>
     <string name="spn_sex_list">請選擇性別</string>
     <string-array name="sex_list">
         <item>male</item>
         <item>female</item>
     </string-array>
-    <string name="family">家人數量</string>
-    <string name="number">預設為3</string>
+    <string-array name="age_listMale">
+        <item>小於30歲</item>
+        <item>30~40歲</item>
+        <item>大於40歲</item>
+    </string-array>
+    <string-array name="age_listFemale">
+        <item>小於28歲</item>
+        <item>28~35歲</item>
+        <item>大於35歲</item>
+    </string-array>
     <string name="maleAgeS">小於30歲</string>
     <string name="maleAgeM">30~40歲</string>
     <string name="maleAgeL">大於40歲</string>

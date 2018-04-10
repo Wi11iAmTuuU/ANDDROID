@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -13,14 +12,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner SpinSex;
-    private String sSex;
+    private Spinner SpinAgeMale,SpinAgeFemale;
+    private String sSex, sAge;
     private Button mBtnOK;
     private TextView mTxtR;
-    private RadioGroup RadGrpAge;
-    private RadioButton RadBtnAgeRange1, RadBtnAgeRange2, RadBtnAgeRange3;
-    private TextView mTxtNumFamily;
-    private NumberPicker mNumPkrFamily;
+    private RadioGroup RadGrpSex;
+    private RadioButton RadBtnSexMale,RadBtnSexFemale;
+    private int iAgeRange;
 
 
     @Override
@@ -28,40 +26,51 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SpinSex = (Spinner) findViewById(R.id.spnSex);
+        SpinAgeMale = (Spinner) findViewById(R.id.spnAgeMale);
+        SpinAgeFemale = (Spinner) findViewById(R.id.spnAgeFemale);
         mBtnOK = (Button) findViewById(R.id.btnOK);
         mTxtR = (TextView) findViewById(R.id.txtR);
-        RadGrpAge = (RadioGroup) findViewById(R.id.radGrpAge);
-        RadBtnAgeRange1 = (RadioButton) findViewById(R.id.radBtnAgeRange1);
-        RadBtnAgeRange2 = (RadioButton) findViewById(R.id.radBtnAgeRange2);
-        RadBtnAgeRange3 = (RadioButton) findViewById(R.id.radBtnAgeRange3);
-        mTxtNumFamily = (TextView) findViewById(R.id.txtNumFamily);
-        mNumPkrFamily = (NumberPicker) findViewById(R.id.numPkrFamply);
-        mNumPkrFamily.setMinValue(0);
-        mNumPkrFamily.setMaxValue(20);
-        mNumPkrFamily.setValue(3);
-
-        SpinSex.setOnItemSelectedListener(spnOnItemSelect);
-        mNumPkrFamily.setOnValueChangedListener(numPkrFamilyOnValueChange);
+        RadGrpSex = (RadioGroup) findViewById(R.id.radGrpSex);
+        RadBtnSexMale = (RadioButton) findViewById(R.id.radBtnSexMale);
+        RadBtnSexFemale = (RadioButton) findViewById(R.id.radBtnSexFemale);
+        SpinAgeMale.setOnItemSelectedListener(spnOnItemSelect);
+        SpinAgeFemale.setOnItemSelectedListener(spnOnItemSelect);
         mBtnOK.setOnClickListener(btnOKOnClick);
+        RadGrpSex.setOnCheckedChangeListener(radGrpSexonCheckedChange);
     }
 
     private AdapterView.OnItemSelectedListener spnOnItemSelect = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            sSex = parent.getSelectedItem().toString();
+            sAge = parent.getSelectedItem().toString();
 
-            switch (sSex) {
-                case "male":
-                    RadBtnAgeRange1.setText(getString(R.string.maleAgeS));
-                    RadBtnAgeRange2.setText(getString(R.string.maleAgeM));
-                    RadBtnAgeRange3.setText(getString(R.string.maleAgeL));
-                    break;
-                case "female":
-                    RadBtnAgeRange1.setText(getString(R.string.femaleAgeS));
-                    RadBtnAgeRange2.setText(getString(R.string.femaleAgeM));
-                    RadBtnAgeRange3.setText(getString(R.string.femaleAgeL));
+            if(sSex.equals("男性")){
+                switch (sAge) {
+                    case "小於30歲":
+                        iAgeRange=1;
+                        break;
+                    case "30~40歲":
+                        iAgeRange=2;
+                        break;
+                    case "大於40歲":
+                        iAgeRange=3;
+                        break;
+                }
             }
+            else{
+                switch (sAge) {
+                    case "小於28歲":
+                        iAgeRange=1;
+                        break;
+                    case "28~35歲":
+                        iAgeRange=2;
+                        break;
+                    case "大於35歲":
+                        iAgeRange=3;
+                        break;
+                }
+            }
+
         }
 
         @Override
@@ -70,10 +79,14 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private NumberPicker.OnValueChangeListener numPkrFamilyOnValueChange = new NumberPicker.OnValueChangeListener() {
+    private RadioGroup.OnCheckedChangeListener radGrpSexonCheckedChange = new RadioGroup.OnCheckedChangeListener() {
         @Override
-        public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-            mTxtNumFamily.setText(String.valueOf(newVal));
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId == R.id.radBtnSexMale) {
+                sSex="男性";
+            } else{
+                sSex="女性";
+            }
         }
     };
 
@@ -82,68 +95,30 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            String strSex = SpinSex.getSelectedItem().toString();
-            int iAgeRange = 0;
-
-            switch (RadGrpAge.getCheckedRadioButtonId()) {
-                case R.id.radBtnAgeRange1:
-                    iAgeRange = 1;
-                    break;
-                case R.id.radBtnAgeRange2:
-                    iAgeRange = 2;
-                    break;
-                case R.id.radBtnAgeRange3:
-                    iAgeRange = 3;
-                    break;
-            }
-            int numFamily = mNumPkrFamily.getValue();
-
             String strSug = "建議：";
 
-            if (strSex.equals("male")) {
+            if (sSex.equals("男性")) {
                 switch (iAgeRange) {
                     case 1:
-                        if ((numFamily < 4) || (numFamily >= 4 && numFamily <= 10))
-                            strSug += "趕快結婚";
-                        else
-                            strSug += "還不急";
+                        strSug += "還不急";
                         break;
                     case 2:
-                        if (numFamily < 4)
-                            strSug += "趕快結婚";
-                        else if (numFamily >= 4 && numFamily <= 10)
-                            strSug += "開始找對象";
-                        else
-                            strSug += "還不急";
+                        strSug += "趕快結婚";
                         break;
                     case 3:
-                        if (numFamily >= 4 && numFamily <= 10)
-                            strSug += "趕快結婚";
-                        else
-                            strSug += "開始找對象";
+                        strSug += "開始找對象";
                         break;
                 }
             } else {
                 switch (iAgeRange) {
                     case 1:
-                        if ((numFamily < 4) || (numFamily >= 4 && numFamily <= 10))
-                            strSug += "趕快結婚";
-                        else
-                            strSug += "還不急";
+                        strSug += "還不急";
                         break;
                     case 2:
-                        if (numFamily < 4)
-                            strSug += "趕快結婚";
-                        else if (numFamily >= 4 && numFamily <= 10)
-                            strSug += "開始找對象";
-                        else
-                            strSug += "還不急";
+                        strSug += "趕快結婚";
                         break;
                     case 3:
-                        if (numFamily >= 4 && numFamily <= 10)
-                            strSug += "趕快結婚";
-                        else
-                            strSug += "開始找對象";
+                        strSug += "開始找對象";
                         break;
                 }
 

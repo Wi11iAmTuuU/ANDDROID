@@ -15,68 +15,56 @@
         android:textSize="18sp"
         android:id="@+id/txtSex" />
 
-    <Spinner
-        android:id="@+id/spnSex"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/sex_list"
-        android:spinnerMode="dialog"
-        android:prompt="@string/spn_sex_list" />
-
-    <TextView
-        android:id="@+id/txtAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/age"
-        android:textSize="18sp" />
-
     <RadioGroup
-        android:id="@+id/radGrpAge"
+        android:id="@+id/radGrpSex"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:checkedButton="@+id/radBtnAgeRange1">
+        android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/radBtnAgeRange1"
+            android:id="@+id/radBtnSexMale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/maleAgeS"
+            android:layout_weight="1"
+            android:text="@string/sex_male"
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radBtnAgeRange2"
-            android:layout_width="match_parent"
+            android:id="@+id/radBtnSexFemale"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/maleAgeM"
+            android:layout_weight="1"
+            android:text="@string/sex_female"
             android:textSize="20sp" />
 
-        <RadioButton
-            android:id="@+id/radBtnAgeRange3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/maleAgeL"
-            android:textSize="20sp" />
     </RadioGroup>
 
     <TextView
-        android:id="@+id/txtNumber"
+        android:id="@+id/txtAgeMale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/family"
-        tools:textSize="18sp" />
+        android:text="@string/Mage"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/spnAgeMale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/age_listMale"
+        android:spinnerMode="dialog" />
 
     <TextView
-        android:id="@+id/txtNumFamily"
+        android:id="@+id/txtAgeFeMale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/number" />
+        android:text="@string/Feage"
+        android:textSize="18sp" />
 
-    <NumberPicker
-        android:id="@+id/numPkrFamply"
+    <Spinner
+        android:id="@+id/spnAgeFemale"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="wrap_content"
+        android:entries="@array/age_listFemale"
+        android:spinnerMode="dialog" />
 
     <Button
         android:id="@+id/btnOK"
